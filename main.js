@@ -65,7 +65,7 @@ window.addEventListener('resize', function() {
 });
 
 const GLoader = new GLTFLoader();
-GLoader.load("assets/cocina_180_ms.glb", function (gltf) {
+GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
 
   let animations = gltf.animations;
 
@@ -75,16 +75,22 @@ GLoader.load("assets/cocina_180_ms.glb", function (gltf) {
 
   const model = gltf.scene;
 
-  for(let i = 0; i <= 112; i++)
+  for(let i = 0; i <= 403; i++)
   {
     Anim[i] = mixer.clipAction(animations[i], model); 
   }
 
   scene.add(model);
 
-  for(let i = 0; i <= 112; i++)
+  for(let i = 0; i <= 403; i++)
   {
-    Anim[i].timeScale = -1;
+    //Anim[i].timeScale = -1;
+
+    Anim[i].clampWhenFinished = true;
+
+    Anim[i].setLoop(THREE.LoopOnce);
+
+    Anim[i].play();
   }
 
   model.translateY(0.5);
