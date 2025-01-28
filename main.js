@@ -101,6 +101,8 @@ const nextLabel= new CSS2DObject(nextButton);
 scene.add(nextLabel);
 nextLabel.position.set(0, 0, 0);
 
+let nextStepVar = document.getElementById('toNext');
+
 //--------------------------------------------------------------
 
 // Botón para reiniciar los pasos ------------------------------
@@ -120,7 +122,17 @@ const resetLabel = new CSS2DObject(resetButton);
 scene.add(resetLabel);
 resetLabel.position.set(0, 0, 0);
 
+let resetStepVar = document.getElementById('toReset');
+
 //--------------------------------------------------------------
+
+function stepButtonFun()
+{
+  for (let i = 0; i <= 403; i++)
+  {
+    Anim[i].play();
+  }
+}
 
 const GLoader = new GLTFLoader();
 GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
@@ -142,13 +154,9 @@ GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
 
   for(let i = 0; i <= 403; i++)
   {
-    //Anim[i].timeScale = -1;
-
     Anim[i].clampWhenFinished = true;
 
     Anim[i].setLoop(THREE.LoopOnce);
-
-    Anim[i].play();
   }
 
   model.translateY(1.7);
@@ -169,6 +177,7 @@ GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
     function(error) {console.log('An error happened');}
 );
 
+nextButton.addEventListener('click', function(e) {stepButtonFun()});
 
 function animate()
 {
