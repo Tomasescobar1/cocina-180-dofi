@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { OrbitControls, ThreeMFLoader } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
+import gsap from "gsap";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -44,25 +45,82 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 
 const dirLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
-//const dirLightHelper = new THREE.DirectionalLightHelper(dirLight);
+const dirLightHelper = new THREE.DirectionalLightHelper(dirLight);
 dirLight.castShadow = true;
-dirLight.position.x = 0.5;
+dirLight.position.x = -1.5;
 dirLight.position.y = 3.1;
 dirLight.position.z = 1.3;
-dirLight.rotateY(-1.0);
-dirLight.rotateZ(-0.8);
+dirLight.rotateY(1.0);
+dirLight.rotateZ(0.8);
 scene.add(dirLight);
-//scene.add(dirLightHelper);
+scene.add(dirLightHelper);
 
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff);
 scene.add(hemiLight);
+
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0px';
+labelRenderer.domElement.style.pointerEvents = 'none';
+document.body.appendChild(labelRenderer.domElement);
 
 window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / this.window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  //labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
+  labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
 });
+
+const dofiLink = document.createElement('a');
+document.getElementById("Link-Picture").appendChild(dofiLink);
+dofiLink.setAttribute('href', 'https://www.moduofi.com/industrias-dofi/');
+dofiLink.setAttribute('id','Link-De-Dofi');
+dofiLink.setAttribute('target', '_blank');
+
+const LinkPicture = document.createElement('img');
+document.getElementById("Link-De-Dofi").appendChild(LinkPicture);
+LinkPicture.setAttribute('src', 'assets/Logo_Dofi.png');
+LinkPicture.setAttribute('id','Logo-De-Dofi');
+LinkPicture.setAttribute('class', 'stylePNG');
+
+//Botón para siguiente paso ------------------------------------
+
+const nextButton = document.createElement('button');
+document.getElementById("Next").appendChild(nextButton);
+nextButton.setAttribute('id', 'toNext');
+nextButton.setAttribute('style', 'border:none;');
+nextButton.setAttribute('class', 'nextButton');
+
+const nextIMG = document.createElement('img');
+document.getElementById('toNext').appendChild(nextIMG);
+nextIMG.setAttribute('src', 'assets/Siguiente.png');
+nextIMG.setAttribute('class', 'nextIMG');
+
+const nextLabel= new CSS2DObject(nextButton);
+scene.add(nextLabel);
+nextLabel.position.set(0, 0, 0);
+
+//--------------------------------------------------------------
+
+// Botón para reiniciar los pasos ------------------------------
+
+const resetButton = document.createElement('button');
+document.getElementById("Reset").appendChild(resetButton);
+resetButton.setAttribute('id', 'toReset');
+resetButton.setAttribute('style', 'border:none;');
+resetButton.setAttribute('class', 'resetButton');
+
+const resetIMG = document.createElement('img');
+document.getElementById('toReset').appendChild(resetIMG);
+resetIMG.setAttribute('src', 'assets/Restart.png');
+resetIMG.setAttribute('class', 'resetIMG');
+
+const resetLabel = new CSS2DObject(resetButton);
+scene.add(resetLabel);
+resetLabel.position.set(0, 0, 0);
+
+//--------------------------------------------------------------
 
 const GLoader = new GLTFLoader();
 GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
@@ -93,7 +151,7 @@ GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
     Anim[i].play();
   }
 
-  model.translateY(0.5);
+  model.translateY(1.7);
   model.translateZ(-0.0);
   model.translateX(0.0);
   model.rotateX(0.0);
@@ -115,6 +173,8 @@ GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
 function animate()
 {
     requestAnimationFrame(animate);
+
+    labelRenderer.render(scene, camera);
 
     renderer.render(scene, camera);
 

@@ -1,0 +1,86 @@
+    .stylePNG
+    {
+        display:flex;
+        position:absolute;
+        flex-direction: column;
+        top: 3%;
+        left: 3%;
+        width: 30%;
+    }
+
+    .nextIMG
+    {
+        background: transparent;
+        width: 100px;
+        cursor: pointer;
+        border-radius: 60%;
+    }
+
+    .nextIMG:active
+    {
+        background-color: olivedrab;
+        width: 90px;
+    }
+
+    .nextButton
+    {
+        background: transparent;
+        pointer-events: all;
+        border-radius: 50%;
+        left: 75px;
+        top: 30%;
+    }
+
+    .resetIMG
+    {
+        background: transparent;
+        width: 90px;
+        cursor: pointer;
+        border-radius: 55%;
+    }
+
+    .resetIMG:active
+    {
+        background-color: olivedrab;
+        width: 80px;
+    }
+
+    .resetButton
+    {
+        background: transparent;
+        pointer-events: all;
+        border-radius: 50%;
+        top: 30%;
+        left: -75px;
+    }
+
+@media only screen and (width >= 768px)
+{
+    .stylePNG
+    {
+        display:flex;
+        position:absolute;
+        flex-direction: column;
+        left:3%;
+        top:3%;
+        width: 20%;
+    }
+
+    #Logo-De-Dofi
+    {
+        max-width: 100%;
+        max-height: 100%;
+        aspect-ratio: width/height;
+    }
+
+    #Link-De-Dofi
+    {
+        pointer-events: all;
+    }
+
+    body
+    {
+        margin: 0;
+        background-color: whitesmoke;
+    }
+}
