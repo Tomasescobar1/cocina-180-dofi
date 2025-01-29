@@ -31,6 +31,29 @@
         top: 30%;
     }
 
+    .prevIMG
+    {
+        background: transparent;
+        width: 100px;
+        cursor: pointer;
+        border-radius: 60%;
+    }
+
+    .prevIMG:active
+    {
+        background-color: olivedrab;
+        width: 90px;
+    }
+
+    .prevButton
+    {
+        background: transparent;
+        pointer-events: all;
+        border-radius: 50%;
+        left: -75px;
+        top: 30%;
+    }
+
     .resetIMG
     {
         background: transparent;
@@ -50,7 +73,7 @@
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        top: 30%;
+        top: 13%;
         left: -75px;
     }
 

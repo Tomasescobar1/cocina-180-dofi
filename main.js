@@ -9,6 +9,8 @@ const h = window.innerHeight;
 
 let value1 = 0;
 
+let value2 = 0;
+
 let Anim = [];
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -21,6 +23,7 @@ const scene = new THREE.Scene();
 const axesHelper = new THREE.AxesHelper(7);
 
 let mixer = new THREE.AnimationMixer();
+
 scene.add(axesHelper);
 scene.background = new THREE.Color(0Xffffff);
 
@@ -72,6 +75,20 @@ window.addEventListener('resize', function() {
   labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
 });
 
+function completedAnims()
+{
+  if(mixer.timeScale == 1)
+  {
+    value2 = 1;
+  }
+  else if (mixer.timeScale == -1)
+  {
+    value2 = -1;
+  }
+}
+
+mixer.addEventListener('finished', function(e) {completedAnims()});
+
 const dofiLink = document.createElement('a');
 document.getElementById("Link-Picture").appendChild(dofiLink);
 dofiLink.setAttribute('href', 'https://www.moduofi.com/industrias-dofi/');
@@ -101,9 +118,28 @@ const nextLabel= new CSS2DObject(nextButton);
 scene.add(nextLabel);
 nextLabel.position.set(0, 0, 0);
 
-let nextStepVar = document.getElementById('toNext');
+nextButton.addEventListener('click', function(e) {stepButtonFun()});
 
 //--------------------------------------------------------------
+
+// Botón para paso anterior ------------------------------------
+
+const prevButton = document.createElement('button');
+document.getElementById("Previous").appendChild(prevButton);
+prevButton.setAttribute('id', 'toPrev');
+prevButton.setAttribute('style', 'border:none;');
+prevButton.setAttribute('class', 'prevButton');
+
+const prevIMG = document.createElement('img');
+document.getElementById('toPrev').appendChild(prevIMG);
+prevIMG.setAttribute('src', 'assets/Anterior.png');
+prevIMG.setAttribute('class', 'prevIMG');
+
+const prevLabel = new CSS2DObject(prevButton);
+scene.add(prevLabel);
+prevLabel.position.set(0, 0, 0);
+
+prevButton.addEventListener('click', function(e) {prevButtonFun()});
 
 // Botón para reiniciar los pasos ------------------------------
 
@@ -122,17 +158,39 @@ const resetLabel = new CSS2DObject(resetButton);
 scene.add(resetLabel);
 resetLabel.position.set(0, 0, 0);
 
-let resetStepVar = document.getElementById('toReset');
+resetButton.addEventListener('click', function(e) {pauseButtonFun()});
 
 //--------------------------------------------------------------
 
 function stepButtonFun()
 {
-  for (let i = 0; i <= 403; i++)
+  if(value2 == 1)
   {
-    Anim[i].play();
+    location.reload();
+  }
+  else
+  {
+    mixer.timeScale = 1;
   }
 }
+
+function pauseButtonFun()
+{
+  mixer.timeScale = 0;
+}
+
+function prevButtonFun()
+{
+  if(value2 == -1)
+  {
+    location.reload();
+  }
+  else
+  {
+    mixer.timeScale = -1;
+  }
+}
+
 
 const GLoader = new GLTFLoader();
 GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
@@ -157,6 +215,10 @@ GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
     Anim[i].clampWhenFinished = true;
 
     Anim[i].setLoop(THREE.LoopOnce);
+
+    mixer.timeScale = 0;
+
+    Anim[i].play();
   }
 
   model.translateY(1.7);
@@ -176,8 +238,6 @@ GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
     function(xhr) {console.log(( xhr.loaded/xhr.total * 100 ) + '%loaded');},
     function(error) {console.log('An error happened');}
 );
-
-nextButton.addEventListener('click', function(e) {stepButtonFun()});
 
 function animate()
 {
