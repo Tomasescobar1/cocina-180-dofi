@@ -8,8 +8,18 @@
         width: 30%;
     }
 
+    .buttonsClass
+    {
+        display: flex;
+        position: absolute;
+        flex-direction: row;
+        top: 80%;
+        left: 20%;
+    }
+
     .nextIMG
     {
+        border: none;
         background: transparent;
         width: 100px;
         cursor: pointer;
@@ -24,15 +34,17 @@
 
     .nextButton
     {
+        display: flex;
+        flex-direction: row;
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        left: 75px;
-        top: 30%;
+        left: 200px;
     }
 
     .prevIMG
     {
+        border: none;
         background: transparent;
         width: 100px;
         cursor: pointer;
@@ -47,15 +59,17 @@
 
     .prevButton
     {
+        display: flex;
+        flex-direction: row;
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        left: -75px;
-        top: 30%;
+        left: 96px;
     }
 
     .resetIMG
     {
+        border: none;
         background: transparent;
         width: 90px;
         cursor: pointer;
@@ -70,15 +84,21 @@
 
     .resetButton
     {
+        display: flex;
+        flex-direction: row;
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        top: 13%;
-        left: -75px;
+        left: 0px;
     }
 
 @media only screen and (width >= 768px)
 {
+    .buttonsClass
+    {
+        left: 30%;
+    }
+
     .stylePNG
     {
         display:flex;
