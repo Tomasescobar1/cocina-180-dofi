@@ -104,7 +104,7 @@ LinkPicture.setAttribute('class', 'stylePNG');
 //Botón para siguiente paso ------------------------------------
 
 const nextButton = document.createElement('button');
-document.getElementById("Buttons").appendChild(nextButton);
+document.getElementById("ButtonsIn").appendChild(nextButton);
 nextButton.setAttribute('id', 'toNext');
 nextButton.setAttribute('style', 'border:none;');
 nextButton.setAttribute('class', 'nextButton');
@@ -114,9 +114,9 @@ document.getElementById('toNext').appendChild(nextIMG);
 nextIMG.setAttribute('src', 'assets/Siguiente.png');
 nextIMG.setAttribute('class', 'nextIMG');
 
-const nextLabel= new CSS2DObject(nextButton);
-//scene.add(nextLabel);
-nextLabel.position.set(0, 0, 0);
+/*const nextLabel= new CSS2DObject(nextButton);
+scene.add(nextLabel);
+nextLabel.position.set(0, 0, 0);*/
 
 nextButton.addEventListener('click', function(e) {stepButtonFun()});
 
@@ -125,7 +125,7 @@ nextButton.addEventListener('click', function(e) {stepButtonFun()});
 // Botón para paso anterior ------------------------------------
 
 const prevButton = document.createElement('button');
-document.getElementById("Buttons").appendChild(prevButton);
+document.getElementById("ButtonsIn").appendChild(prevButton);
 prevButton.setAttribute('id', 'toPrev');
 prevButton.setAttribute('style', 'border:none;');
 prevButton.setAttribute('class', 'prevButton');
@@ -135,16 +135,16 @@ document.getElementById('toPrev').appendChild(prevIMG);
 prevIMG.setAttribute('src', 'assets/Anterior.png');
 prevIMG.setAttribute('class', 'prevIMG');
 
-const prevLabel = new CSS2DObject(prevButton);
-//scene.add(prevLabel);
-prevLabel.position.set(0, 0, 0);
+/*const prevLabel = new CSS2DObject(prevButton);
+scene.add(prevLabel);
+prevLabel.position.set(0, 0, 0);*/
 
 prevButton.addEventListener('click', function(e) {prevButtonFun()});
 
 // Botón para reiniciar los pasos ------------------------------
 
 const resetButton = document.createElement('button');
-document.getElementById("Buttons").appendChild(resetButton);
+document.getElementById("ButtonsIn").appendChild(resetButton);
 resetButton.setAttribute('id', 'toReset');
 resetButton.setAttribute('style', 'border:none;');
 resetButton.setAttribute('class', 'resetButton');
@@ -154,9 +154,9 @@ document.getElementById('toReset').appendChild(resetIMG);
 resetIMG.setAttribute('src', 'assets/Restart.png');
 resetIMG.setAttribute('class', 'resetIMG');
 
-const resetLabel = new CSS2DObject(resetButton);
-//scene.add(resetLabel);
-resetLabel.position.set(0, 0, 0);
+/*const resetLabel = new CSS2DObject(resetButton);
+scene.add(resetLabel);
+resetLabel.position.set(0, 0, 0);*/
 
 resetButton.addEventListener('click', function(e) {pauseButtonFun()});
 
