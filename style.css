@@ -10,6 +10,9 @@
 
     .buttonsOutClass
     {
+        width: windowInnerWidth;
+        height: windowInnerHeight;
+        aspect-ratio: width/height;
         position:absolute;
         display: flex;
         flex-direction: row;
@@ -19,6 +22,9 @@
 
     .buttonsInCLass
     {
+        width: windowInnerWidth;
+        height: windowInnerHeight;
+        aspect-ratio: width/height;
         display: flex;
         flex-direction: row;
         pointer-events: all;
