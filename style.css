@@ -35,18 +35,21 @@
 
     .nextIMG:active
     {
+        border: none;
+        background: transparent;
         background-color: olivedrab;
-        width: 90px;
+        width: 100px;
     }
 
     .nextButton
     {
+        border: none;
         display: flex;
         flex-direction: row;
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        left: 197px;
+        /*left: 197px;*/
     }
 
     .prevIMG
@@ -60,18 +63,21 @@
 
     .prevIMG:active
     {
+        background: transparent;
+        border: none;
         background-color: olivedrab;
-        width: 90px;
+        width: 100px;
     }
 
     .prevButton
     {
+        border: none;
         display: flex;
         flex-direction: row;
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        left: 96px;
+        /*left: 96px;*/
     }
 
     .resetIMG
@@ -85,18 +91,21 @@
 
     .resetIMG:active
     {
+        border: none;
+        background: transparent;
         background-color: olivedrab;
-        width: 80px;
+        width: 90px;
     }
 
     .resetButton
     {
+        border: none;
         display: flex;
         flex-direction: row;
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        left: 0px;
+        /*left: 0px;*/
     }
 
 @media only screen and (width >= 768px)
