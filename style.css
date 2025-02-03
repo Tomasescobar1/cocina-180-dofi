@@ -43,6 +43,7 @@
 
     .nextButton
     {
+        -webkit-tap-highlight-color: transparent;
         border: none;
         display: flex;
         flex-direction: row;
