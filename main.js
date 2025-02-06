@@ -81,7 +81,24 @@ let posMat = [[0, 0, 0], [0, 0, 0]];
   console.log(rowString);
 }*/
 
-const cameraPointer = new THREE.Vector3();
+let popupMessage = document.getElementById("popupWindow");
+
+let smokeyCurtain = document.querySelector(".smokeyCurtain");
+
+let closeButton = document.getElementById("close");
+
+closeButton.addEventListener("click", function(e){closePopup()});
+
+window.addEventListener("load", function() {
+  popupMessage.classList.add("open-welcomeWindow");
+  smokeyCurtain.classList.add("open-welcomeWindow");
+});
+
+function closePopup()
+{
+  popupMessage.classList.remove("open-welcomeWindow"); 
+  smokeyCurtain.classList.remove("open-welcomeWindow");
+}
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
