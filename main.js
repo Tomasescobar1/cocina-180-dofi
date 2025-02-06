@@ -218,11 +218,6 @@ function stepAnimation(input)
 
       gsap.to(mixer.timeScale = 1, {duration: 4.5, onComplete: () => mixer.timeScale = 0});
 
-      if(mixer.timeScale == 0)
-      {
-        gsap.to(camera.position, {x: posMat[1][0], y: posMat[1][1], z: posMat[1][2], duration: 1.5});
-      }
-
     break;
 
     case 3:

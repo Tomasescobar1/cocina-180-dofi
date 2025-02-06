@@ -221,11 +221,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        top: 30%;
+        top: 15%;
         visibility: hidden;
         background-color: white;
         padding: 1px 30px;
         border-radius: 40px;
+        border: none;
+        margin: 0;
     }
 
     .openStepSign
