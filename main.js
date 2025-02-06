@@ -172,6 +172,44 @@ function completedAnims()
   }
 }
 
+let stepOne = document.getElementById("stepOne");
+
+function stepSignHide(input)
+{
+  switch(input)
+  {
+    case 1:
+
+      stepOne.classList.remove("openStepSign");
+
+    break;
+
+    case 2:
+
+      //stepTwo.classList.remove("openStepSign");
+
+    break;
+  }
+}
+
+function stepSignShow(input)
+{
+  switch(input)
+  {
+    case 1:
+
+      stepOne.classList.add("openStepSign");
+
+    break;
+
+    case 2:
+
+      //stepTwo.classList.add("openStepSign");
+
+    break;
+  }
+}
+
 function stepAnimation(input)
 {
   switch(input)
@@ -179,6 +217,17 @@ function stepAnimation(input)
     case 2:
 
       gsap.to(mixer.timeScale = 1, {duration: 4.5, onComplete: () => mixer.timeScale = 0});
+
+      if(mixer.timeScale == 0)
+      {
+        gsap.to(camera.position, {x: posMat[1][0], y: posMat[1][1], z: posMat[1][2], duration: 1.5});
+      }
+
+    break;
+
+    case 3:
+
+
 
     break;
   }
@@ -279,7 +328,7 @@ function stepButtonFun()
 
     case 1:
     
-    
+      gsap.to(camera.position, {x: posMat[0][0], y: posMat[0][1], z: posMat[0][2], duration: 1.5, onComplete: () => stepSignShow(value1)});
 
     break;
 
@@ -287,8 +336,12 @@ function stepButtonFun()
 
       console.log(camera.position);
 
-      gsap.to(camera.position, {x: posMat[0][0], y: posMat[0][1], z: posMat[0][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
+      //gsap.to(camera.position, {x: posMat[0][0], y: posMat[0][1], z: posMat[0][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
       
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
     break;
   }
 }
