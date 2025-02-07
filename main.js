@@ -13,7 +13,7 @@ let value2 = 0;
 
 let Anim = [];
 
-let posMat = [[0, 0, 0], [0, 0, 0]];
+let posMat = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 
  for(let i = 0; i < 2; i++)
 {
@@ -52,19 +52,19 @@ let posMat = [[0, 0, 0], [0, 0, 0]];
         {
           case 0:
 
-            posMat[i][j] = -4;
+            posMat[i][j] = -2.208250915;
 
           break;
 
           case 1:
 
-            posMat[i][j] = 4;
+            posMat[i][j] = 3.23497808;
 
           break;
 
           case 2:
 
-            posMat[i][j] = 3;
+            posMat[i][j] = 0.656921457;
 
           break;
 
@@ -216,7 +216,7 @@ function stepAnimation(input)
   {
     case 2:
 
-      gsap.to(mixer.timeScale = 1, {duration: 4.5, onComplete: () => mixer.timeScale = 0});
+      gsap.to(mixer.timeScale = 1, {duration: 6.5, onComplete: () => mixer.timeScale = 0});
 
     break;
 
@@ -331,13 +331,17 @@ function stepButtonFun()
 
       console.log(camera.position);
 
-      //gsap.to(camera.position, {x: posMat[0][0], y: posMat[0][1], z: posMat[0][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
+      gsap.to(camera.position, {x: posMat[1][0], y: posMat[1][1], z: posMat[1][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
       
       stepSignHide(value1 - 1);
 
-      stepAnimation(value1);
-
     break;
+
+    case 3:
+
+      
+
+    break; 
   }
 }
 
