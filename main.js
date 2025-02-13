@@ -1,10 +1,8 @@
 import * as THREE from "three";
-import { VRMLLoader } from "three/examples/jsm/Addons.js";
-import { OrbitControls, ThreeMFLoader } from "three/examples/jsm/Addons.js";
+import { OrbitControls} from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import gsap from "gsap";
-import { step } from "three/tsl";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -270,12 +268,12 @@ scene.add(dirLightHelper);
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff);
 scene.add(hemiLight);
 
-const labelRenderer = new CSS2DRenderer();
+/*const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(window.innerWidth, window.innerHeight);
 labelRenderer.domElement.style.position = 'absolute';
 labelRenderer.domElement.style.top = '0px';
 labelRenderer.domElement.style.pointerEvents = 'none';
-document.body.appendChild(labelRenderer.domElement);
+document.body.appendChild(labelRenderer.domElement);*/
 
 window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / this.window.innerHeight;
@@ -575,8 +573,6 @@ function prevButtonFun()
 function animate()
 {
     requestAnimationFrame(animate);
-
-    labelRenderer.render(scene, camera);
 
     renderer.render(scene, camera);
 
