@@ -10,10 +10,6 @@
 
     .buttonsOutClass
     {
-        width: 1%;
-        max-width: 100%;
-        height: 1%;
-        max-height: 100%;
         margin: 0;
         aspect-ratio: width/height;
         position:absolute;
@@ -22,6 +18,7 @@
         pointer-events: all;
         background: transparent;
         top: 50%;
+        left: 2%;
     }
 
     .buttonsInCLass
@@ -61,7 +58,6 @@
         background: transparent;
         pointer-events: all;
         border-radius: 50%;
-        /*left: 197px;*/
     }
 
     .prevIMG
@@ -111,7 +107,7 @@
 
     .resetButton
     {
-        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent; 
         border: none;
         display: flex;
         flex-direction: row;
@@ -122,6 +118,7 @@
 
     .smokeyCurtain
     {
+        border: none;
         margin: 0;
         width: 100%;
         height: 100%;
@@ -206,16 +203,77 @@
 
     .stepContainer
     {
+        border: none;
         display: flex;
         justify-content: center;
     }
 
     .stepOne
     {   
-        width: 300px;
-        height: 250px;
+        width: 180px;
+        height: 120px;
         font-family: Comfortaa;
-        font-size: large;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 68%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepTwo
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;    
+        top: 60%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepThree
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 25%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepFour
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
         font-weight: bold;
         position: absolute;
         display: flex;
@@ -225,9 +283,29 @@
         visibility: hidden;
         background-color: white;
         padding: 1px 30px;
-        border-radius: 40px;
-        border: none;
-        margin: 0;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepFive
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 15%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
     }
 
     .openStepSign
@@ -243,11 +321,6 @@
 
 @media only screen and (width >= 768px)
 {
-    /*.buttonsClass
-    {
-        left: 30%;
-    }*/
-
     .stylePNG
     {
         display:flex;
@@ -268,6 +341,56 @@
     #Link-De-Dofi
     {
         pointer-events: all;
+    }
+
+    .stepOne
+    {   
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 60%;
+    }
+
+    .stepTwo
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 60%;
+    }
+
+    .stepThree
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 15%;
+    }
+
+    .stepFour
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 15%;
+    }
+
+    .stepFive
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 60%;
     }
 
     body

@@ -1,8 +1,10 @@
 import * as THREE from "three";
+import { VRMLLoader } from "three/examples/jsm/Addons.js";
 import { OrbitControls, ThreeMFLoader } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 import gsap from "gsap";
+import { step } from "three/tsl";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -11,11 +13,14 @@ let value1 = 0;
 
 let value2 = 0;
 
+let value3 = 0;
+
 let Anim = [];
 
-let posMat = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
+let posMat = [ [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0],
+[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0] ];
 
- for(let i = 0; i < 2; i++)
+for(let i = 0; i < 5; i++)
 {
   for(let j = 0; j < 3; j++)
   {
@@ -52,22 +57,98 @@ let posMat = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
         {
           case 0:
 
-            posMat[i][j] = -2.208250915;
+            posMat[i][j] = -1.6697457972682947;
 
           break;
 
           case 1:
 
-            posMat[i][j] = 3.23497808;
+            posMat[i][j] = 2.228107684497154;
 
           break;
 
           case 2:
 
-            posMat[i][j] = 0.656921457;
+            posMat[i][j] = 1.3085660779353273;
 
           break;
 
+        }
+
+      break;
+
+      case 2:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -1.68364751;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 3.0391814696;
+
+          break;
+
+          case 2:
+
+            posMat[i][j] = 0.8988204298;
+
+          break;
+
+        }
+
+      break;
+
+      case 3:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -2.443641488017427;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 3.216144723853674;
+
+          break;
+
+          case 2:
+
+            posMat[i][j] = 1.9149934134205338;
+
+          break;
+        }
+
+      break;
+
+      case 4:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -2.48817277;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 3.267835732;
+
+          break;
+
+          case 2:
+
+            posMat[i][j] = 0.76396711850;
+
+          break;
         }
 
       break;
@@ -75,17 +156,19 @@ let posMat = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
   }
 }
 
-/*for(let row of posMat)
+for(let row of posMat)
 {
   const rowString = row.join(' ');
   console.log(rowString);
-}*/
+}
 
 let popupMessage = document.getElementById("popupWindow");
 
 let smokeyCurtain = document.querySelector(".smokeyCurtain");
 
 let closeButton = document.getElementById("close");
+
+const GLoader = new GLTFLoader()
 
 closeButton.addEventListener("click", function(e){closePopup()});
 
@@ -97,13 +180,52 @@ window.addEventListener("load", function() {
 function closePopup()
 {
   popupMessage.classList.remove("open-welcomeWindow"); 
+
   smokeyCurtain.classList.remove("open-welcomeWindow");
+
+  GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
+
+    let animations = gltf.animations;
+
+    gltf.scene;
+    gltf.scenes;
+    gltf.cameras;
+
+    const model = gltf.scene;
+
+    for(let i = 0; i <= 403; i++)
+    {
+      Anim[i] = mixer.clipAction(animations[i], model); 
+    }
+
+    scene.add(model);
+
+    for(let i = 0; i <= 403; i++)
+    {
+      Anim[i].clampWhenFinished = true;
+
+      Anim[i].setLoop(THREE.LoopOnce);
+
+      mixer.timeScale = 0;
+
+      Anim[i].play();
+    }
+
+    model.translateY(1.7);
+    model.translateZ(-0.0);
+    model.translateX(0.0);
+    model.rotateX(0.0);
+
+    gltf.asset;}, 
+      function(xhr) {console.log(( xhr.loaded/xhr.total * 100 ) + '%loaded');},
+      function(error) {console.log('An error happened');}
+  );
 }
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
-renderer.shadowMap.enabled = true;
+renderer.shadowMap.enabled = false;
 renderer.setClearColor(0xB0C4DE, 0.5);
 
 const scene = new THREE.Scene();
@@ -123,14 +245,16 @@ plane1.receiveShadow = true;
 
 const aspect = w/h;
 const fov = 50;
-const near = 0.1;
-const far = 50;
-const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+let near = 0.1;
+let far = 50;
+let camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.set(-4,4,3);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
+controls.maxAzimuthAngle = Math.PI/2;
+controls.maxDistance = 7;
 
 const dirLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
 const dirLightHelper = new THREE.DirectionalLightHelper(dirLight);
@@ -173,6 +297,10 @@ function completedAnims()
 }
 
 let stepOne = document.getElementById("stepOne");
+let stepTwo = document.getElementById("stepTwo");
+let stepThree = document.getElementById("stepThree");
+let stepFour = document.getElementById("stepFour");
+let stepFive = document.getElementById("stepFive");
 
 function stepSignHide(input)
 {
@@ -184,9 +312,27 @@ function stepSignHide(input)
 
     break;
 
-    case 2:
+    case 4:
 
-      //stepTwo.classList.remove("openStepSign");
+      stepTwo.classList.remove("openStepSign");
+
+    break;
+
+    case 5:
+
+      stepThree.classList.remove("openStepSign");
+
+    break;
+
+    case 6:
+
+      stepFour.classList.remove("openStepSign");
+
+    break;
+
+    case 7:
+
+      stepFive.classList.remove("openStepSign");
 
     break;
   }
@@ -202,9 +348,27 @@ function stepSignShow(input)
 
     break;
 
-    case 2:
+    case 4:
 
-      //stepTwo.classList.add("openStepSign");
+      stepTwo.classList.add("openStepSign");
+
+    break;
+
+    case 5:
+
+      stepThree.classList.add("openStepSign");
+
+    break;
+
+    case 6:
+
+      stepFour.classList.add("openStepSign");
+
+    break;
+
+    case 7:
+
+      stepFive.classList.add("openStepSign");
 
     break;
   }
@@ -216,13 +380,19 @@ function stepAnimation(input)
   {
     case 2:
 
-      gsap.to(mixer.timeScale = 1, {duration: 6.5, onComplete: () => mixer.timeScale = 0});
+      gsap.to(mixer.timeScale = 1, {duration: 5, onComplete: () => mixer.timeScale = 0});
 
     break;
 
     case 3:
 
+      gsap.to(mixer.timeScale = 1, {duration: 5.5, onComplete: () => mixer.timeScale = 0});
 
+    break;
+
+    case 6:
+
+      gsap.to(mixer.timeScale = 1, {duration: 6.5, onComplete: () => mixer.timeScale = 0});
 
     break;
   }
@@ -312,8 +482,6 @@ function stepButtonFun()
   else
   {
     value1++;
-
-    console.log(camera.position);
   }
 
   console.log(value1);
@@ -331,17 +499,57 @@ function stepButtonFun()
 
       console.log(camera.position);
 
-      gsap.to(camera.position, {x: posMat[1][0], y: posMat[1][1], z: posMat[1][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
-      
-      stepSignHide(value1 - 1);
+      gsap.to(camera.position, {x: posMat[1][0], y: posMat[1][1], z: posMat[1][2], duration: 1.5});
 
     break;
 
     case 3:
 
+      console.log(camera.position);
+
+      gsap.to(camera.position, {x: posMat[2][0], y: posMat[2][1], z: posMat[2][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
       
+      stepSignHide(value1 - 2);
+
+    break;
+
+    case 4:
+
+      console.log(camera.position);
+
+      stepSignShow(value1);
+
+    break;
+
+    case 5:
+
+      stepSignHide(value1 - 1);
+
+      console.log(camera.position);
+
+      gsap.to(camera.position, {x: posMat[3][0], y: posMat[3][1], z: posMat[3][2], duration: 1.5, onComplete: () => stepSignShow(value1)});
 
     break; 
+
+    case 6:
+
+      stepSignHide(value1 - 1);
+
+      gsap.to(camera.position, {x: posMat[3][0], y: posMat[3][1], z: posMat[3][2], duration: 6.5, onComplete: () => stepSignShow(value1)});
+
+      stepAnimation(value1);
+
+    break;
+
+    case 7: 
+
+      stepSignHide(value1 - 1);
+
+      console.log(camera.position);
+
+      gsap.to(camera.position, {x: posMat[4][0], y: posMat[4][1], z: posMat[4][2], duration: 1.5, onComplete: () => stepSignShow(value1)});
+
+    break;
   }
 }
 
@@ -363,54 +571,6 @@ function prevButtonFun()
     console.log(value1);
   }
 }
-
-
-const GLoader = new GLTFLoader();
-GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
-
-  let animations = gltf.animations;
-
-  gltf.scene;
-  gltf.scenes;
-  gltf.cameras;
-
-  const model = gltf.scene;
-
-  for(let i = 0; i <= 403; i++)
-  {
-    Anim[i] = mixer.clipAction(animations[i], model); 
-  }
-
-  scene.add(model);
-
-  for(let i = 0; i <= 403; i++)
-  {
-    Anim[i].clampWhenFinished = true;
-
-    Anim[i].setLoop(THREE.LoopOnce);
-
-    mixer.timeScale = 0;
-
-    Anim[i].play();
-  }
-
-  model.translateY(1.7);
-  model.translateZ(-0.0);
-  model.translateX(0.0);
-  model.rotateX(0.0);
-
-  model.traverse(function(node)
-  {
-    if(node.isMesh)
-    {
-      node.castShadow = true;
-    }
-  });
-
-  gltf.asset;}, 
-    function(xhr) {console.log(( xhr.loaded/xhr.total * 100 ) + '%loaded');},
-    function(error) {console.log('An error happened');}
-);
 
 function animate()
 {
