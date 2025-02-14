@@ -227,12 +227,12 @@ function closePopup()
 
         console.log(percentValue);
 
-        setTimeout(function(){
+        /*setTimeout(function(){
           if(percentValue == 100)
             {
               progressBarElement.classList.remove("open-welcomeWindow");
             }
-        }, 1000);
+        }, 1000);*/
       },
       function(error) {console.log('An error happened');}
   );
