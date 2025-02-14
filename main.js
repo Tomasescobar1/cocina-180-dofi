@@ -11,7 +11,7 @@ let value1 = 0;
 
 let value2 = 0;
 
-let value3 = 0;
+let percentValue = 0;
 
 let Anim = [];
 
@@ -166,6 +166,10 @@ let smokeyCurtain = document.querySelector(".smokeyCurtain");
 
 let closeButton = document.getElementById("close");
 
+let progressBarElement = document.getElementById("progress-bar");
+
+let progressBar = document.getElementById("bar");
+
 const GLoader = new GLTFLoader()
 
 closeButton.addEventListener("click", function(e){closePopup()});
@@ -180,6 +184,8 @@ function closePopup()
   popupMessage.classList.remove("open-welcomeWindow"); 
 
   smokeyCurtain.classList.remove("open-welcomeWindow");
+
+  progressBarElement.classList.add("open-welcomeWindow");
 
   GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
 
@@ -215,7 +221,19 @@ function closePopup()
     model.rotateX(0.0);
 
     gltf.asset;}, 
-      function(xhr) {console.log(( xhr.loaded/xhr.total * 100 ) + '%loaded');},
+      function(xhr) {percentValue = xhr.loaded/xhr.total * 100;
+
+        progressBar.style.setProperty("--width", percentValue);
+
+        console.log(percentValue);
+
+        setTimeout(function(){
+          if(percentValue == 100)
+            {
+              progressBarElement.classList.remove("open-welcomeWindow");
+            }
+        }, 2000);
+      },
       function(error) {console.log('An error happened');}
   );
 }
@@ -279,7 +297,6 @@ window.addEventListener('resize', function() {
   camera.aspect = window.innerWidth / this.window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight);
 });
 
 function completedAnims()
@@ -423,17 +440,13 @@ document.getElementById('toNext').appendChild(nextIMG);
 nextIMG.setAttribute('src', 'assets/Siguiente.png');
 nextIMG.setAttribute('class', 'nextIMG');
 
-/*const nextLabel= new CSS2DObject(nextButton);
-scene.add(nextLabel);
-nextLabel.position.set(0, 0, 0);*/
-
 nextButton.addEventListener('click', function(e) {stepButtonFun()});
 
 //--------------------------------------------------------------
 
 // Botón para paso anterior ------------------------------------
 
-const prevButton = document.createElement('button');
+/*const prevButton = document.createElement('button');
 document.getElementById("ButtonsIn").appendChild(prevButton);
 prevButton.setAttribute('id', 'toPrev');
 prevButton.setAttribute('style', 'border:none;');
@@ -444,11 +457,7 @@ document.getElementById('toPrev').appendChild(prevIMG);
 prevIMG.setAttribute('src', 'assets/Anterior.png');
 prevIMG.setAttribute('class', 'prevIMG');
 
-/*const prevLabel = new CSS2DObject(prevButton);
-scene.add(prevLabel);
-prevLabel.position.set(0, 0, 0);*/
-
-prevButton.addEventListener('click', function(e) {prevButtonFun()});
+prevButton.addEventListener('click', function(e) {prevButtonFun()});*/
 
 // Botón para reiniciar los pasos ------------------------------
 
@@ -462,10 +471,6 @@ const resetIMG = document.createElement('img');
 document.getElementById('toReset').appendChild(resetIMG);
 resetIMG.setAttribute('src', 'assets/Restart.png');
 resetIMG.setAttribute('class', 'resetIMG');
-
-/*const resetLabel = new CSS2DObject(resetButton);
-scene.add(resetLabel);
-resetLabel.position.set(0, 0, 0);*/
 
 resetButton.addEventListener('click', function(e) {pauseButtonFun()});
 

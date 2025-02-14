@@ -201,6 +201,52 @@
         transform: scale(0.95);
     }
 
+    .bar-container
+    {
+        display: flex;
+        justify-content: center;
+        visibility: hidden;
+    }
+
+    .progress-bar-container
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 300px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: white;
+        top: 40%;
+        background-clip: padding-box;
+        box-shadow: 0 0 5px grey;
+    }
+
+    .progress-bar
+    {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        background-color: olivedrab;
+        left: 5px;
+        width: calc(var(--width, 0)*1%);
+        min-width: 90px;
+        max-width: 290px;
+        height: 40px;
+        border-radius: 20px;
+    }
+
+    .load
+    {
+        display: flex;
+        position: absolute;
+        left: 5px;
+        font-family: Comfortaa;
+        font-weight: bold;
+        font-size: small;
+    }
+
     .stepContainer
     {
         border: none;
