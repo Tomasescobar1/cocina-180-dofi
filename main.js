@@ -232,7 +232,7 @@ function closePopup()
             {
               progressBarElement.classList.remove("open-welcomeWindow");
             }
-        }, 2000);
+        }, 1000);
       },
       function(error) {console.log('An error happened');}
   );
