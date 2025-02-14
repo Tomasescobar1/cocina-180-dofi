@@ -132,19 +132,19 @@ for(let i = 0; i < 5; i++)
         {
           case 0:
 
-            posMat[i][j] = -2.48817277;
+            posMat[i][j] = -2.28817277;
 
           break;
 
           case 1:
 
-            posMat[i][j] = 3.267835732;
+            posMat[i][j] = 3.667835732;
 
           break;
 
           case 2:
 
-            posMat[i][j] = 0.76396711850;
+            posMat[i][j] = 0.96396711850;
 
           break;
         }
@@ -410,6 +410,12 @@ function stepAnimation(input)
       gsap.to(mixer.timeScale = 1, {duration: 6.5, onComplete: () => mixer.timeScale = 0});
 
     break;
+
+    case 8:
+
+      gsap.to(mixer.timeScale = 1, {duration: 2, onComplete: () => mixer.timeScale = 0});
+
+    break;
   }
 }
 
@@ -551,6 +557,16 @@ function stepButtonFun()
       console.log(camera.position);
 
       gsap.to(camera.position, {x: posMat[4][0], y: posMat[4][1], z: posMat[4][2], duration: 1.5, onComplete: () => stepSignShow(value1)});
+
+    break;
+
+    case 8:
+
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
+
 
     break;
   }
