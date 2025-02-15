@@ -188,7 +188,7 @@ for(let i = 0; i < 9; i++)
 
           case 1:
 
-            posMat[i][j] = 1.9049730216086663;
+            posMat[i][j] = 2.7049730216086663;
 
           break;
 
@@ -369,6 +369,7 @@ let stepFive = document.getElementById("stepFive");
 let stepSix = document.getElementById("stepSix");
 let stepSeven = document.getElementById("stepSeven");
 let stepEight = document.getElementById("stepEight");
+let stepNine = document.getElementById("stepNine");
 
 function stepSignHide(input)
 {
@@ -416,9 +417,15 @@ function stepSignHide(input)
 
     break;
 
-    case 11:
+    case 13:
 
       stepEight.classList.remove("openStepSign");
+
+    break;
+
+    case 15:
+
+      stepNine.classList.remove("openStepSign");
 
     break;
   }
@@ -475,6 +482,12 @@ function stepSignShow(input)
       stepEight.classList.add("openStepSign");
 
     break;
+
+    case 15:
+
+      stepNine.classList.add("openStepSign");
+
+    break;
   }
 }
 
@@ -526,7 +539,31 @@ function stepAnimation(input)
 
     case 12:
 
-      gsap.to(mixer.timeScale = 1, {duration: 2.5, onComplete: () => mixer.timeScale = 0});
+      gsap.to(mixer.timeScale = 1, {duration: 3, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 13:
+
+      gsap.to(mixer.timeScale = 1, {duration: 3, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 14:
+
+      gsap.to(mixer.timeScale = 1, {duration: 1.3, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 15:
+
+      gsap.to(mixer.timeScale = 1, {duration: 2.4, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 16:
+
+      gsap.to(mixer.timeScale = 1, {duration: 3, oncomplete: () => mixer.timeScale = 0});
 
     break;
   }
@@ -718,6 +755,32 @@ function stepButtonFun()
     case 13:
 
       stepSignShow(value1);
+
+    break;
+
+    case 14:
+
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
+    break;
+
+    case 15:
+
+      stepSignShow(value1);
+
+      gsap.to(camera.position, {x: -4, y: 4, z: 3, duration: 1.5, onComplete: () => stepAnimation(value1)});
+
+    break;
+
+    case 16:
+
+      stepSignHide(value1 - 1);
+
+      console.log(camera.position);
+
+      stepAnimation(value1);
 
     break;
   }
