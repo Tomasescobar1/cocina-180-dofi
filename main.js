@@ -320,7 +320,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.maxAzimuthAngle = Math.PI/2;
-controls.maxDistance = 10;
+controls.maxDistance = 15;
 
 const dirLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
 const dirLightHelper = new THREE.DirectionalLightHelper(dirLight);
@@ -628,7 +628,7 @@ document.getElementById('toReset').appendChild(resetIMG);
 resetIMG.setAttribute('src', 'assets/Restart.png');
 resetIMG.setAttribute('class', 'resetIMG');
 
-resetButton.addEventListener('click', function(e) {pauseButtonFun()});
+resetButton.addEventListener('click', function(e) {resetButtonFun()});
 
 //--------------------------------------------------------------
 
@@ -786,9 +786,11 @@ function stepButtonFun()
   }
 }
 
-function pauseButtonFun()
+function resetButtonFun()
 {
   mixer.timeScale = 0;
+
+  gsap.to(camera.position, {x: -4, y: 4, z: 3, onComplete: () => location.reload()});
 }
 
 function prevButtonFun()
