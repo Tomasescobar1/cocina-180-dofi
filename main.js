@@ -563,7 +563,7 @@ function stepAnimation(input)
 
     case 16:
 
-      gsap.to(mixer.timeScale = 1, {duration: 3, oncomplete: () => mixer.timeScale = 0});
+      gsap.to(mixer.timeScale = 1, {duration: 3, onComplete: () => mixer.timeScale = 0});
 
     break;
   }
