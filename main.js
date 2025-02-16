@@ -200,6 +200,56 @@ for(let i = 0; i < 9; i++)
         }
 
       break;
+
+      case 7:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -6.96994425311808;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 2.604488852821634;
+
+          break;
+
+          case 2:
+
+            posMat[i][j] = 0.8031823150304553;
+
+          break;
+        }
+
+      break;
+
+      /*case 8:
+
+        swith(j)
+        {
+          case 0:
+
+            posMat[i][j] = 
+
+          break;
+
+          case 1:
+
+            posMat[i][j] =
+
+          break;
+
+          case 2:
+
+            posMat[i][j] =
+
+          break;
+        }
+
+      break;*/
     }
   }
 }
@@ -370,6 +420,9 @@ let stepSix = document.getElementById("stepSix");
 let stepSeven = document.getElementById("stepSeven");
 let stepEight = document.getElementById("stepEight");
 let stepNine = document.getElementById("stepNine");
+let stepTen = document.getElementById("stepTen");
+let stepEleven = document.getElementById("stepEleven");
+let stepTwelve = document.getElementById("stepTwelve");
 
 function stepSignHide(input)
 {
@@ -426,6 +479,12 @@ function stepSignHide(input)
     case 15:
 
       stepNine.classList.remove("openStepSign");
+
+    break;
+
+    case 17:
+
+      stepTen.classList.remove("openStepSign");
 
     break;
   }
@@ -486,6 +545,24 @@ function stepSignShow(input)
     case 15:
 
       stepNine.classList.add("openStepSign");
+
+    break;
+
+    case 17: 
+    
+      stepTen.classList.add("openStepSign");
+
+    break;
+
+    case 18:
+
+      stepEleven.classList.add("openStepSign");
+
+    break;
+
+    case 19:
+
+      stepTwelve.classList.add("openStepSign");
 
     break;
   }
@@ -563,7 +640,19 @@ function stepAnimation(input)
 
     case 16:
 
-      gsap.to(mixer.timeScale = 1, {duration: 3, onComplete: () => mixer.timeScale = 0});
+      gsap.to(mixer.timeScale = 1, {duration: 7, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 17:
+
+      gsap.to(mixer.timeScale = 1, {duration: 2.5, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 18:
+
+      gsap.to(mixer.timeScale = 1, {duration: 4, onComplete: () => mixer.timeScale = 0});
 
     break;
   }
@@ -780,7 +869,25 @@ function stepButtonFun()
 
       console.log(camera.position);
 
+      gsap.to(camera.position, {x: posMat[7][0], y: posMat[7][1], z: posMat[7][2], duration: 2.5, onComplete: () => stepAnimation(value1)});
+
+    break;
+
+    case 17:
+
+      stepSignShow(value1);
+
       stepAnimation(value1);
+
+    break;
+
+    case 18:
+
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
+      console.log(camera.position);
 
     break;
   }
