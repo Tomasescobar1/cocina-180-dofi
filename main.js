@@ -11,14 +11,16 @@ let value1 = 0;
 
 let value2 = 0;
 
+let value3 = 0;
+
 let percentValue = 0;
 
 let Anim = [];
 
 let posMat = [ [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0],
-[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0] ];
+[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 
-for(let i = 0; i < 9; i++)
+for(let i = 0; i < 14; i++)
 {
   for(let j = 0; j < 3; j++)
   {
@@ -226,30 +228,106 @@ for(let i = 0; i < 9; i++)
 
       break;
 
-      /*case 8:
+      case 8:
 
-        swith(j)
+        switch(j)
         {
           case 0:
 
-            posMat[i][j] = 
+            posMat[i][j] = -5.86994425311808;
 
           break;
 
           case 1:
 
-            posMat[i][j] =
+            posMat[i][j] = 2.604488852821634;
 
           break;
 
           case 2:
 
-            posMat[i][j] =
+            posMat[i][j] = 0.8031823150304553;
 
           break;
         }
 
-      break;*/
+      break;
+
+      case 9:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -3.96994425311808;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 4.504488852821634;
+
+          break;
+
+          case 2:
+
+           posMat[i][j] = 0.6031823150304553;
+
+          break;
+        }
+
+      break;
+
+      case 10:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -3.96994425311808;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 4.504488852821634;
+
+          break;
+
+          case 2:
+
+           posMat[i][j] = 0.6031823150304553;
+
+          break;
+        }
+
+      break;
+
+      case 11:
+
+        switch(j)
+        {
+          case 0:
+
+            posMat[i][j] = -4.16994425311808;
+
+          break;
+
+          case 1:
+
+            posMat[i][j] = 4.504488852821634;
+
+          break;
+
+          case 2:
+
+           posMat[i][j] = 0.6031823150304553;
+
+          break;
+        }
+
+      break;
+      
     }
   }
 }
@@ -341,15 +419,15 @@ function closePopup()
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
-renderer.shadowMap.enabled = false;
+renderer.shadowMap.enabled = true;
 renderer.setClearColor(0xB0C4DE, 0.5);
 
 const scene = new THREE.Scene();
-const axesHelper = new THREE.AxesHelper(7);
+//const axesHelper = new THREE.AxesHelper(7);
 
 let mixer = new THREE.AnimationMixer();
 
-scene.add(axesHelper);
+//scene.add(axesHelper);
 scene.background = new THREE.Color(0Xffffff);
 
 const planeGeo = new THREE.PlaneGeometry(30, 30);
@@ -373,7 +451,7 @@ controls.maxAzimuthAngle = Math.PI/2;
 controls.maxDistance = 15;
 
 const dirLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
-const dirLightHelper = new THREE.DirectionalLightHelper(dirLight);
+//const dirLightHelper = new THREE.DirectionalLightHelper(dirLight);
 dirLight.castShadow = true;
 dirLight.position.x = -1.5;
 dirLight.position.y = 3.1;
@@ -381,7 +459,7 @@ dirLight.position.z = 1.3;
 dirLight.rotateY(1.0);
 dirLight.rotateZ(0.8);
 scene.add(dirLight);
-scene.add(dirLightHelper);
+//scene.add(dirLightHelper);
 
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff);
 scene.add(hemiLight);
@@ -423,6 +501,10 @@ let stepNine = document.getElementById("stepNine");
 let stepTen = document.getElementById("stepTen");
 let stepEleven = document.getElementById("stepEleven");
 let stepTwelve = document.getElementById("stepTwelve");
+let stepThirteen = document.getElementById("stepThirteen");
+let stepFourteen = document.getElementById("stepFourteen");
+let stepFifteen = document.getElementById("stepFifteen");
+let stepSixteen = document.getElementById("stepSixteen");
 
 function stepSignHide(input)
 {
@@ -487,6 +569,43 @@ function stepSignHide(input)
       stepTen.classList.remove("openStepSign");
 
     break;
+
+    case 18:
+
+      stepEleven.classList.remove("openStepSign");
+
+    break;
+
+    case 19:
+
+      stepTwelve.classList.remove("openStepSign");
+
+    break;
+
+    case 20:
+
+      stepThirteen.classList.remove("openStepSign");
+
+    break;
+
+    case 21:
+
+      stepFourteen.classList.remove("openStepSign");
+
+    break;
+
+    case 23:
+
+      stepFifteen.classList.remove("openStepSign");
+
+    break;
+
+    case 25:
+
+      stepSixteen.classList.remove("openStepSign");
+
+    break;
+
   }
 }
 
@@ -563,6 +682,30 @@ function stepSignShow(input)
     case 19:
 
       stepTwelve.classList.add("openStepSign");
+
+    break;
+
+    case 20:
+
+      stepThirteen.classList.add("openStepSign");
+
+    break;
+
+    case 21:
+
+      stepFourteen.classList.add("openStepSign");
+
+    break;
+
+    case 23:
+
+      stepFifteen.classList.add("openStepSign");
+
+    break;
+
+    case 25:
+
+      stepSixteen.classList.add("openStepSign");
 
     break;
   }
@@ -646,13 +789,43 @@ function stepAnimation(input)
 
     case 17:
 
-      gsap.to(mixer.timeScale = 1, {duration: 2.5, onComplete: () => mixer.timeScale = 0});
+      gsap.to(mixer.timeScale = 1, {duration: 3, onComplete: () => mixer.timeScale = 0});
 
     break;
 
     case 18:
 
       gsap.to(mixer.timeScale = 1, {duration: 4, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 22:
+
+      gsap.to(mixer.timeScale = 1, {duration: 6, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 23:
+
+      gsap.to(mixer.timeScale = 1, {duration: 2, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 24:
+
+      gsap.to(mixer.timeScale = 1, {duration: 4, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 25:
+
+      gsap.to(mixer.timeScale = 1, {duration: 2, onComplete: () => mixer.timeScale = 0});
+
+    break;
+
+    case 26:
+
+      gsap.to(mixer.timeScale = 1, {duration: 8, onComplete: () => mixer.timeScale = 0});
 
     break;
   }
@@ -723,7 +896,7 @@ resetButton.addEventListener('click', function(e) {resetButtonFun()});
 
 function stepButtonFun()
 {
-  if(value2 == 1)
+  if(value2 == 1 && value1 == 27)
   {
     location.reload();
   }
@@ -887,7 +1060,81 @@ function stepButtonFun()
 
       stepAnimation(value1);
 
+      gsap.to(camera.position, {x: posMat [7][0], y: posMat[7][1], z: posMat[7][2], duration: 1, onComplete: () => stepSignShow(value1)});
+
       console.log(camera.position);
+
+    break;
+
+    case 19:
+
+      stepSignHide(value1 -1);
+
+      gsap.to(camera.position, {x: posMat[8][0], y: posMat[8][1], z: posMat[8][2], duration: 1, onComplete: () => stepSignShow(value1)});
+
+    break;
+
+    case 20:
+
+      stepSignHide(value1 - 1);
+
+      gsap.to(camera.position, {x: posMat[8][0], y: posMat [8][1], z: posMat[8][2], duration: 1, onComplete: () => stepSignShow(value1)});
+
+    break;
+
+    case 21:
+
+      stepSignHide(value1 - 1);
+
+      gsap.to(camera.position, {x: (posMat[9][0]), y: posMat [9][1], z: posMat[9][2], duration: 1, onComplete: () => stepSignShow(value1)});
+
+    break;
+
+    case 22:
+
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
+    break;
+
+    case 23:
+
+      stepSignShow(value1);
+
+      gsap.to(camera.position, {x: posMat[10][0], y: posMat[10][1], z: posMat[10][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
+
+    break;
+
+    case 24:
+
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
+    break;
+
+    case 25:
+
+      stepSignShow(value1);
+
+      gsap.to(camera.position, {x: posMat[11][0], y: posMat[11][1], z: posMat[11][2], duration: 1.5, onComplete: () => stepAnimation(value1)});
+
+    break;
+
+    case 26:
+
+      stepSignHide(value1 - 1);
+
+      stepAnimation(value1);
+
+    break;
+
+    case 27:
+
+      gsap.to(camera.position, {x: -3.5, y: 3.5, z: 2, duration: 1.5});
+
+      plane1.position.y = 1.15;
 
     break;
   }

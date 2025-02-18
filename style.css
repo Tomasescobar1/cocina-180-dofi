@@ -494,6 +494,86 @@
         box-shadow: 0 0 2px grey;
     }
 
+    .stepThirteen
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 80%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepFourteen
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 30%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepFifteen
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 30%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
+    .stepSixteen
+    {
+        width: 180px;
+        height: 120px;
+        font-family: Comfortaa;
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 70%;
+        visibility: hidden;
+        background-color: white;
+        padding: 1px 30px;
+        border-radius: 30px;
+        background-clip: padding-box;
+        box-shadow: 0 0 2px grey;
+    }
+
     .openStepSign
     {
         visibility: visible;
@@ -646,7 +726,47 @@
         font-family: Comfortaa;
         font-size: large;
         font-weight: bold;
-        top: 20%;
+        top: 68%;
+    }
+
+    .stepThirteen
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 68%;
+    }
+
+    .stepFourteen
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 65%;
+    }
+
+    .stepFifteen
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 65%;
+    }
+
+    .stepSixteen
+    {
+        width: 300px;
+        height: 150px;
+        font-family: Comfortaa;
+        font-size: large;
+        font-weight: bold;
+        top: 70%;
     }
 
     body
