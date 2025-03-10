@@ -7,7 +7,7 @@ import gsap from "gsap";
 const w = window.innerWidth;
 const h = window.innerHeight;
 
-let value1 = 0;
+//let value1 = 0;
 
 let value2 = 0;
 
@@ -15,10 +15,12 @@ let value3 = 0;
 
 let percentValue = 0;
 
+let timeOutVal = 0;
+
 let Anim = [];
 
 let posMat = [ [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0],
-[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
+[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0] ];
 
 for(let i = 0; i < 14; i++)
 {
@@ -348,13 +350,17 @@ let progressBarElement = document.getElementById("progress-bar");
 
 let progressBar = document.getElementById("bar");
 
+let loadingThrobber = document.getElementById("loadingSpinner");
+
+let userBar = document.getElementById("userBar");
+
 const GLoader = new GLTFLoader()
 
 closeButton.addEventListener("click", function(e){closePopup()});
 
 window.addEventListener("load", function() {
   popupMessage.classList.add("open-welcomeWindow");
-  smokeyCurtain.classList.add("open-welcomeWindow");
+  smokeyCurtain.classList.add("open-welcomeWindow");  
 });
 
 function closePopup()
@@ -364,6 +370,10 @@ function closePopup()
   smokeyCurtain.classList.remove("open-welcomeWindow");
 
   progressBarElement.classList.add("open-welcomeWindow");
+
+  nextButton.addEventListener('click', function(e) {safeTimeOut()});
+
+  //userBar.classList.add("openStepSign");
 
   GLoader.load("assets/cocina_180_mi.glb", function (gltf) {
 
@@ -477,6 +487,40 @@ window.addEventListener('resize', function() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+function safeTimeOut()
+{
+
+    console.log(timeOutVal);
+
+    value3++;
+
+    nextButton.classList.add("buttonDisable");
+
+    loadingThrobber.classList.add("throbberAnim");
+
+    stepButtonFun(value3);
+
+    if(value3 == 15)
+    {
+      timeOutVal = 7500;
+    }
+    else
+    {
+      timeOutVal = 6500;
+    }
+
+    setTimeout(function incrementValue(){
+
+      loadingThrobber.classList.remove("throbberAnim");
+
+      nextButton.classList.remove("buttonDisable");
+
+      }, timeOutVal
+
+    );
+
+}
+
 function completedAnims()
 {
   if(mixer.timeScale == 1)
@@ -505,6 +549,8 @@ let stepThirteen = document.getElementById("stepThirteen");
 let stepFourteen = document.getElementById("stepFourteen");
 let stepFifteen = document.getElementById("stepFifteen");
 let stepSixteen = document.getElementById("stepSixteen");
+
+let finalStepVideo = document.getElementById("congratsVideo");
 
 function stepSignHide(input)
 {
@@ -858,7 +904,7 @@ document.getElementById('toNext').appendChild(nextIMG);
 nextIMG.setAttribute('src', 'assets/Siguiente.png');
 nextIMG.setAttribute('class', 'nextIMG');
 
-nextButton.addEventListener('click', function(e) {stepButtonFun()});
+//nextButton.addEventListener('click', function(e) {safeTimeOut()});
 
 //--------------------------------------------------------------
 
@@ -894,15 +940,11 @@ resetButton.addEventListener('click', function(e) {resetButtonFun()});
 
 //--------------------------------------------------------------
 
-function stepButtonFun()
+function stepButtonFun(value1)
 {
-  if(value2 == 1 && value1 == 27)
+  if(value2 == 1 && value1 == 29)
   {
     location.reload();
-  }
-  else
-  {
-    value1++;
   }
 
   console.log(value1);
@@ -1135,6 +1177,12 @@ function stepButtonFun()
       gsap.to(camera.position, {x: -3.5, y: 3.5, z: 2, duration: 1.5});
 
       plane1.position.y = 1.15;
+
+    break;
+
+    case 28:
+
+      finalStepVideo.play();
 
     break;
   }

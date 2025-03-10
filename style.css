@@ -56,7 +56,7 @@
         display: flex;
         flex-direction: row;
         background: transparent;
-        pointer-events: all;
+        /*pointer-events: all;*/
         border-radius: 50%;
     }
 
@@ -246,6 +246,93 @@
         font-weight: bold;
         font-size: small;
     }
+
+    .userBarContainer
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .userBarClass
+    {
+        display: flex;
+        position: absolute;
+        visibility: hidden;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        background-clip: padding-box;
+        box-shadow: 0 0 5px grey;
+        width: 400px;
+        height: 50px;
+        top: 80%;
+        border-radius: 25px;
+    }
+
+    .loadingSpinner
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        top: 100px;
+    }
+
+    .loadingSpinnerCircle
+    {
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: white;
+        background: conic-gradient(white, olivedrab, olivedrab)
+    }
+
+    .loadingSpinnerCircle::after
+    {
+        content:"";
+        background-color: whitesmoke;
+        width: 35px;
+        height: 35px;
+        border-radius: 20px;
+    }
+
+    .throbberAnim
+    {
+        display: flex;
+        position: absolute;
+        visibility: visible;
+        left: 50%;
+        top: 80%;
+        animation: rotate 1.5s ease-in-out infinite;
+    }
+
+    @keyframes rotate
+    {
+        0%
+        {
+            rotate: 0deg;
+        }
+
+        100%
+        {
+            rotate: 720deg;
+        }
+    }
+
+    .congratsVideoContainer
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+    }
+    
 
     .stepContainer
     {
@@ -579,6 +666,11 @@
         visibility: visible;
     }
 
+    .buttonDisable
+    {
+        pointer-events: none;
+    }
+
     body
     {
         margin: 0;
@@ -767,6 +859,23 @@
         font-size: large;
         font-weight: bold;
         top: 70%;
+    }
+
+    .loadingSpinner
+    {
+        display: flex;
+        visibility: hidden;
+        top: 100px;
+    }
+
+    .throbberAnim
+    {
+        display: flex;
+        position: absolute;
+        visibility: visible;
+        left: 5.5%;
+        top: 45%;
+        animation: rotate 1.5s ease-in-out infinite;
     }
 
     body
