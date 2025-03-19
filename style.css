@@ -56,7 +56,10 @@
         display: flex;
         flex-direction: row;
         background: transparent;
-        /*pointer-events: all;*/
+        pointer-events: auto;
+        -webkit-user-select: none;
+        user-select: none;
+        -ms-user-select: none;
         border-radius: 50%;
     }
 
@@ -669,6 +672,7 @@
     .buttonDisable
     {
         pointer-events: none;
+        opacity: 0.3;
     }
 
     body
